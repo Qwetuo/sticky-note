@@ -31,3 +31,23 @@ textarea {
   font-size: 1.5rem;
   height: 73%;
 }
+
+#add-new-note {
+  box-sizing: border-box;
+  height: 310px;
+  width: 300px;
+  padding: 45px;
+  text-align: center;
+  font-size: 10rem;
+  font-weight: 700;
+  color: rgba(0,0,0,0.1);
+  border: 20px solid rgba(0,0,0,0.1);
+  border-radius: 30px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+#add-new-note:hover {
+  color: rgba(0,0,0,0.3);
+  border: 20px solid rgba(0,0,0,0.3);
+}

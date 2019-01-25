@@ -10,3 +10,14 @@ const createNewNote = () => {
 const initialNote = createNewNote();
 
 document.body.appendChild(initialNote);
+
+const button = document.createElement("div")
+button.setAttribute("id", "add-new-note")
+button.innerHTML = "+"
+
+document.body.appendChild(button)
+
+button.addEventListener("click", () => {
+  const note = createNewNote();
+  document.body.appendChild(note);
+});
