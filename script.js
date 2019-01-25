@@ -4,6 +4,15 @@ const createNewNote = () => {
   note.innerHTML =
     "<textarea class='title' placeholder='Enter title'></textarea>" +
     "<textarea class='content' placeholder='Enter content...'></textarea>";
+
+  const cancelBtn = document.createElement("button");
+  cancelBtn.classList.add("cancelBtn");
+  cancelBtn.textContent = "x";
+  note.appendChild(cancelBtn);
+  cancelBtn.addEventListener("click", event => {
+    note.remove();
+  });
+
   return note;
 };
 
