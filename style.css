@@ -10,6 +10,8 @@ body {
   background: linear-gradient(#F9EFAF, #F7E98D);
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);;
   position: relative;
+  float: left;
+  margin: 10px;
 }
 
 textarea {
@@ -34,6 +36,7 @@ textarea {
 }
 
 #add-new-note {
+  float: left;
   box-sizing: border-box;
   height: 310px;
   width: 300px;
