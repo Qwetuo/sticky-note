@@ -70,3 +70,36 @@ textarea {
   background: rgb(224, 183, 77);
   color: black;
 }
+
+#search-container {
+  width: 80%;
+  margin: 40px 10%;
+}
+
+#search-input {
+  width: 60%;
+  height: 50px;
+  font-size: 1.5rem;
+}
+
+#search-container > button {
+  padding: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.search-button {
+  background: lightgreen;
+}
+
+.search-button:hover {
+  background: rgb(77, 128, 77);
+}
+
+.undo-button {
+  background: orange;
+}
+
+.undo-button:hover {
+  background: rgb(141, 92, 0);
+}
