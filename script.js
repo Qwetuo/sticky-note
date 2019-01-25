@@ -19,5 +19,5 @@ document.body.appendChild(button)
 
 button.addEventListener("click", () => {
   const note = createNewNote();
-  document.body.appendChild(note);
+  document.body.insertBefore(note, button);
 });
