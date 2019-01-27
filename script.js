@@ -72,8 +72,12 @@ function createNewNote(title, content) {
 };
 
 function retrieveSavedNotes() {
-  const titleArr = JSON.parse(localStorage.getItem("titles"))
-  const contentArr = JSON.parse(localStorage.getItem("contents"))
+  let titleArr = []
+  let contentArr = []
+  if (localStorage !== undefined) {
+    titleArr = JSON.parse(localStorage.getItem("titles"))
+    contentArr = JSON.parse(localStorage.getItem("contents"))
+  }
   if (titleArr === null || titleArr.length === 0) {
     const emptyNote = createNewNote();
     document.body.appendChild(emptyNote)
@@ -108,6 +112,10 @@ saveButton.classList.add("saveBtn")
 document.body.appendChild(saveButton)
 
 saveButton.addEventListener("click", function() {
+  if (localStorage === undefined) {
+    return alert("Browser's localStorage not available. Notes will not be saved.")
+  }
+
   let titleNodes = document.querySelectorAll(".title")
   titleNodes = [].slice.call(titleNodes)
   let titleArr = []
@@ -125,5 +133,5 @@ saveButton.addEventListener("click", function() {
   localStorage.setItem("titles", JSON.stringify(titleArr))
   localStorage.setItem("contents", JSON.stringify(contentArr))
   const storageLen = JSON.parse(localStorage.getItem("titles")).length
-  alert(storageLen + " notes have been saved!")
+  alert(storageLen + " note(s) have been saved!")
 })
