@@ -1,4 +1,4 @@
-const searchBarElem = () => {
+function searchBarElem() {
   const searchContainer = document.createElement("div")
   searchContainer.setAttribute("id", "search-container")
 
@@ -11,27 +11,36 @@ const searchBarElem = () => {
   searchBtn.textContent = "Search"
   searchBtn.classList.add("search-button")
   searchContainer.appendChild(searchBtn)
-  searchBtn.addEventListener("click", event => {
+  searchBtn.addEventListener("click", function() {
     const searchValue = input.value.toLowerCase()
 
-    const notes = document.querySelectorAll(".note-container")
+    let notes = document.querySelectorAll(".note-container")
+    notes = [].slice.call(notes)
 
-    notes.forEach(note => note.style.display = "block")
+    notes.forEach(function(note) { 
+      note.style.display = "block"
+    })
 
-    const notesWithNoMatch = Array.from(notes).filter(note => {
+    const notesWithNoMatch = notes.filter(function(note) {
       const titleValue = note.querySelector(".title").value.toLowerCase()
       return titleValue.indexOf(searchValue) === -1
     })
-    notesWithNoMatch.forEach(note => note.style.display = "none")
+    notesWithNoMatch.forEach(function(note) {
+      note.style.display = "none"
+    })
   })
 
   const undoBtn = document.createElement("button")
   undoBtn.textContent = "Undo"
   undoBtn.classList.add("undo-button")
   searchContainer.appendChild(undoBtn)
-  undoBtn.addEventListener("click", event => {
-    const notes = document.querySelectorAll(".note-container")
-    notes.forEach(note => note.style.display = "block")
+  undoBtn.addEventListener("click", function() {
+    let notes = document.querySelectorAll(".note-container")
+    notes = [].slice.call(notes)
+
+    notes.forEach(function(note) {
+      note.style.display = "block"
+    })
   })
 
   return searchContainer
@@ -39,7 +48,7 @@ const searchBarElem = () => {
 
 document.body.appendChild(searchBarElem())
 
-const createNewNote = () => {
+function createNewNote() {
   const note = document.createElement("div");
   note.classList.add("note-container");
   note.innerHTML =
@@ -50,8 +59,9 @@ const createNewNote = () => {
   cancelBtn.classList.add("cancelBtn");
   cancelBtn.textContent = "x";
   note.appendChild(cancelBtn);
-  cancelBtn.addEventListener("click", event => {
-    note.remove();
+  cancelBtn.addEventListener("click", function(note) {
+    const noteNode = note.target.parentNode
+    noteNode.parentNode.removeChild(noteNode)
   });
 
   return note;
@@ -67,7 +77,7 @@ button.innerHTML = "+"
 
 document.body.appendChild(button)
 
-button.addEventListener("click", () => {
+button.addEventListener("click", function () {
   const note = createNewNote();
   document.body.insertBefore(note, button);
 });
