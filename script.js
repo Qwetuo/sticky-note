@@ -73,7 +73,7 @@ function createNewNote(title, content) {
 function retrieveSavedNotes() {
   const titleArr = JSON.parse(localStorage.getItem("titles"))
   const contentArr = JSON.parse(localStorage.getItem("contents"))
-  if (titleArr === null) {
+  if (titleArr === null || titleArr.length === 0) {
     const emptyNote = createNewNote();
     document.body.appendChild(emptyNote)
   } else {
