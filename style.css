@@ -107,3 +107,14 @@ textarea {
 .undo-button:hover {
   background: rgb(141, 92, 0);
 }
+
+.saveBtn {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  font-size: 2rem;
+  border-radius: 10px;
+  background:darkgreen;
+  color: white;
+  padding: 0.5rem 1.5rem;
+}

@@ -81,3 +81,33 @@ button.addEventListener("click", function () {
   const note = createNewNote();
   document.body.insertBefore(note, button);
 });
+
+
+// SAVE
+
+const saveButton = document.createElement("button")
+saveButton.innerHTML = "Save"
+saveButton.classList.add("saveBtn")
+
+document.body.appendChild(saveButton)
+
+saveButton.addEventListener("click", function() {
+  let titleNodes = document.querySelectorAll(".title")
+  titleNodes = [].slice.call(titleNodes)
+  let titleArr = []
+  titleNodes.forEach(function(titleNode) {
+    titleArr.push(titleNode.value)
+  })
+
+  let contentNodes = document.querySelectorAll(".content")
+  contentNodes = [].slice.call(contentNodes)
+  let contentArr = []
+  contentNodes.forEach(function(contentNode) {
+    contentArr.push(contentNode.value)
+  })
+
+  localStorage.setItem("titles", JSON.stringify(titleArr))
+  localStorage.setItem("contents", JSON.stringify(contentArr))
+  const storageLen = JSON.parse(localStorage.getItem("titles")).length
+  alert(storageLen + " notes have been saved!")
+})
