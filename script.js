@@ -35,6 +35,7 @@ function searchBarElem() {
   undoBtn.classList.add("undo-button")
   searchContainer.appendChild(undoBtn)
   undoBtn.addEventListener("click", function() {
+    input.value = ""
     let notes = document.querySelectorAll(".note-container")
     notes = [].slice.call(notes)
 
