@@ -48,12 +48,15 @@ function searchBarElem() {
 
 document.body.appendChild(searchBarElem())
 
-function createNewNote() {
+function createNewNote(title, content) {
+  const titleToRender = title ? title : "";
+  const contentToRender = content ? content : "";
+
   const note = document.createElement("div");
   note.classList.add("note-container");
   note.innerHTML =
-    "<textarea class='title' placeholder='Enter title'></textarea>" +
-    "<textarea class='content' placeholder='Enter content...'></textarea>";
+    "<textarea class='title' placeholder='Enter title'>" + titleToRender + "</textarea>" +
+    "<textarea class='content' placeholder='Enter content...'>" + contentToRender + "</textarea>";
 
   const cancelBtn = document.createElement("button");
   cancelBtn.classList.add("cancelBtn");
@@ -67,9 +70,21 @@ function createNewNote() {
   return note;
 };
 
-const initialNote = createNewNote();
+function retrieveSavedNotes() {
+  const titleArr = JSON.parse(localStorage.getItem("titles"))
+  const contentArr = JSON.parse(localStorage.getItem("contents"))
+  if (titleArr === null) {
+    const emptyNote = createNewNote();
+    document.body.appendChild(emptyNote)
+  } else {
+    titleArr.forEach(function(title,index) {
+      const note = createNewNote(title, contentArr[index])
+      document.body.appendChild(note)
+    })
+  }
+}
 
-document.body.appendChild(initialNote);
+retrieveSavedNotes()
 
 const button = document.createElement("div")
 button.setAttribute("id", "add-new-note")
